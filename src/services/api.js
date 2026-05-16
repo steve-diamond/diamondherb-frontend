@@ -81,9 +81,12 @@ export const productsAPI = {
 // Orders API
 export const ordersAPI = {
   create: (data) => api.post('/orders', data),
+  getAll: (params) => api.get('/orders', { params }),
   getMyOrders: (params) => api.get('/orders/my-orders', { params }),
   getById: (id) => api.get(`/orders/${id}`),
+  track: (id) => api.get(`/orders/${id}/track`),
   trackByNumber: (orderNumber) => api.get(`/orders/${orderNumber}/track`),
+  updateStatus: (id, status) => api.put(`/orders/${id}/status`, { status }),
   verifyPayment: (id, data) => api.post(`/orders/${id}/verify-payment`, data),
 };
 
