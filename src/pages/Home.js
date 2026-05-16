@@ -10,7 +10,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { productsAPI, articlesAPI } from '../services/api';
 import ProductCard from '../components/ProductCard';
 
-const Home = () => {
 const slides = [
   {
     id: 1,
