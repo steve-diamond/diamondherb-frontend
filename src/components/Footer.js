@@ -6,137 +6,147 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-earth-800 text-white mt-auto">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* About Section */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <FaLeaf className="text-2xl text-green-400" />
-              <h3 className="text-xl font-bold">Steve Diamond Herbal Life</h3>
+    <footer className="bg-gray-900 text-white mt-auto">
+      {/* Newsletter Strip */}
+      <div className="bg-green-700 py-10">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="text-xl font-bold mb-1">Stay Updated with Herbal Wellness</h3>
+              <p className="text-green-100 text-sm">Get health tips, product launches & exclusive offers delivered to your inbox.</p>
             </div>
-            <p className="text-gray-300 text-sm">
-              Your trusted source for authentic African herbs and natural remedies. 
-              Promoting wellness through traditional herbal medicine.
+            <form className="flex w-full md:w-auto gap-2" onSubmit={e => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Enter your email..."
+                className="flex-1 md:w-72 px-4 py-3 rounded-lg text-gray-800 text-sm focus:outline-none"
+              />
+              <button type="submit" className="bg-white text-green-700 font-bold px-5 py-3 rounded-lg hover:bg-green-50 transition-colors text-sm whitespace-nowrap">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand */}
+          <div>
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <div className="bg-green-600 p-2 rounded-lg">
+                <FaLeaf className="text-white text-lg" />
+              </div>
+              <div>
+                <p className="font-extrabold text-white text-lg leading-tight">Steve Diamond</p>
+                <p className="text-xs text-green-400 tracking-widest">HERBAL LIFE</p>
+              </div>
+            </Link>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              Your trusted source for authentic African herbs and natural remedies. Promoting wellness through traditional herbal medicine since 2020.
             </p>
-            <div className="flex space-x-4 mt-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors">
-                <FaFacebook className="text-2xl" />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors">
-                <FaTwitter className="text-2xl" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors">
-                <FaInstagram className="text-2xl" />
-              </a>
-              <a href="https://wa.me/2348012345678" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-green-400 transition-colors">
-                <FaWhatsapp className="text-2xl" />
-              </a>
+            <div className="flex gap-3">
+              {[
+                { href: 'https://facebook.com', icon: FaFacebook, label: 'Facebook' },
+                { href: 'https://twitter.com', icon: FaTwitter, label: 'Twitter' },
+                { href: 'https://instagram.com', icon: FaInstagram, label: 'Instagram' },
+                { href: 'https://wa.me/2348012345678', icon: FaWhatsapp, label: 'WhatsApp' },
+              ].map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 bg-gray-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-colors"
+                >
+                  <Icon className="text-sm" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/products" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Products
-                </Link>
-              </li>
-              <li>
-                <Link to="/prescription" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Get Prescription
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Blog & Resources
-                </Link>
-              </li>
-              <li>
-                <Link to="/suppliers" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Find Suppliers
-                </Link>
-              </li>
-              <li>
-                <Link to="/track-order" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Track Order
-                </Link>
-              </li>
+            <h3 className="text-base font-bold mb-5 text-white">Quick Links</h3>
+            <ul className="space-y-2.5">
+              {[
+                { to: '/products', label: 'Browse Products' },
+                { to: '/prescription', label: 'Get Free Prescription' },
+                { to: '/blog', label: 'Health Blog' },
+                { to: '/suppliers', label: 'Find Suppliers' },
+                { to: '/track-order', label: 'Track My Order' },
+                { to: '/cart', label: 'Shopping Cart' },
+              ].map(({ to, label }) => (
+                <li key={to}>
+                  <Link to={to} className="text-gray-400 hover:text-green-400 transition-colors text-sm flex items-center gap-1.5">
+                    <span className="text-green-600 text-xs">›</span> {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Customer Service */}
+          {/* Account & Help */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Customer Service</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-gray-300 hover:text-green-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-gray-300 hover:text-green-400 transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link to="/shipping" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Shipping Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/returns" className="text-gray-300 hover:text-green-400 transition-colors">
-                  Returns & Refunds
-                </Link>
-              </li>
+            <h3 className="text-base font-bold mb-5 text-white">Account & Help</h3>
+            <ul className="space-y-2.5">
+              {[
+                { to: '/register', label: 'Create Account' },
+                { to: '/login', label: 'Login' },
+                { to: '/profile', label: 'My Profile' },
+                { to: '/track-order', label: 'Order Tracking' },
+                { to: '/blog', label: 'FAQ & Resources' },
+                { to: '/prescription', label: 'Health Consultation' },
+              ].map(({ to, label }) => (
+                <li key={label}>
+                  <Link to={to} className="text-gray-400 hover:text-green-400 transition-colors text-sm flex items-center gap-1.5">
+                    <span className="text-green-600 text-xs">›</span> {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-green-400 mt-1" />
-                <span className="text-gray-300 text-sm">
-                  123 Herbal Street, Lagos, Nigeria
-                </span>
+            <h3 className="text-base font-bold mb-5 text-white">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex gap-3">
+                <FaMapMarkerAlt className="text-green-500 mt-0.5 shrink-0" />
+                <span className="text-gray-400 text-sm">123 Herbal Street, Victoria Island, Lagos, Nigeria</span>
               </li>
-              <li className="flex items-center space-x-3">
-                <FaPhone className="text-green-400" />
-                <a href="tel:+2348012345678" className="text-gray-300 hover:text-green-400">
-                  +234 801 234 5678
-                </a>
+              <li className="flex gap-3 items-center">
+                <FaPhone className="text-green-500 shrink-0" />
+                <a href="tel:+2348012345678" className="text-gray-400 hover:text-green-400 transition-colors text-sm">+234 801 234 5678</a>
               </li>
-              <li className="flex items-center space-x-3">
-                <FaEnvelope className="text-green-400" />
-                <a href="mailto:info@stevediamond.com" className="text-gray-300 hover:text-green-400">
-                  info@stevediamond.com
-                </a>
+              <li className="flex gap-3 items-center">
+                <FaEnvelope className="text-green-500 shrink-0" />
+                <a href="mailto:info@stevediamondherbal.com" className="text-gray-400 hover:text-green-400 transition-colors text-sm">info@stevediamondherbal.com</a>
+              </li>
+              <li className="flex gap-3 items-center">
+                <FaWhatsapp className="text-green-500 shrink-0" />
+                <a href="https://wa.me/2348012345678" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors text-sm">WhatsApp Us</a>
               </li>
             </ul>
+            <div className="mt-5 p-3 bg-gray-800 rounded-lg">
+              <p className="text-xs text-gray-400 font-medium mb-1">Business Hours</p>
+              <p className="text-sm text-gray-300">Mon – Fri: 8am – 6pm</p>
+              <p className="text-sm text-gray-300">Sat: 9am – 4pm</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Steve Diamond Herbal Life. All rights reserved.
-          </p>
-          <div className="mt-2 space-x-4">
-            <Link to="/privacy" className="text-gray-400 hover:text-green-400 text-sm">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-gray-400 hover:text-green-400 text-sm">
-              Terms of Service
-            </Link>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800 py-5">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-500">
+          <p>© {currentYear} Steve Diamond Herbal Life. All rights reserved.</p>
+          <div className="flex gap-5">
+            <Link to="/blog" className="hover:text-green-400 transition-colors">Privacy Policy</Link>
+            <Link to="/blog" className="hover:text-green-400 transition-colors">Terms of Service</Link>
+            <Link to="/blog" className="hover:text-green-400 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
